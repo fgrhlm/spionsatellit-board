@@ -1,0 +1,300 @@
+@import "colors";
+@import "fonts";
+
+/* Mixins */
+@mixin full-width {
+	width: 100%;
+}
+
+@mixin width-range {
+	width: 450px;
+	max-width: 500px;
+}
+
+@mixin side-margin {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+@mixin side-padding {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+@mixin flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Reset */
+html,
+body,
+ul,
+li,
+div,
+span,
+b,
+i {
+	font-family: $font;
+	padding: 0;
+	margin: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+html, body {
+  background-color: $bg;
+  color: $fg;
+}
+
+input, textarea {
+  font-family: $font;
+  border-radius: 5px;
+  border: 1px solid $fg;
+  background-color: $bg;
+  color: $fg;
+}
+
+body {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+button {
+  cursor: pointer;
+	background-color: $bg;
+	color: $fg;
+	border: 1px solid $fg;
+	border-radius: 5px;
+	margin-top: 15px;
+	font-family: $font;
+	font-size: 18px;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+  color: $fg;
+}
+
+hr {
+  @include width-range;
+}
+
+ul {
+  font-size: 13px;
+  list-style: none;
+  
+  a {
+    color: $purple !important;
+  }
+}
+
+p {
+  @include width-range;
+  word-wrap: break-word;
+}
+/* Utilities */
+.red {
+  background-color: $red;
+}
+
+.green {
+  background-color: $green;
+}
+
+.text-black {
+  color: $bg !important;
+}
+
+/* Components */
+.NavBar {
+	@include width-range;
+	margin-top: 10px;
+	display: flex;
+
+	background: $green;
+	list-style: none;
+}
+
+.NavBar,
+.NavItem,
+NavBrand {
+	user-select: none;
+}
+
+.NavBrand {
+	@include side-padding;
+	background-color: $fg;
+	color: $bg;
+}
+
+.NavItem {
+	@include side-margin;
+  text-decoration: none;
+	color: $bg !important;
+	cursor: pointer;
+}
+
+.NavItems {
+	margin-left: auto;
+}
+
+.Feed {
+	@include width-range;
+	margin-top: 5px;
+
+	li:nth-child(odd) {
+		background-color: $grey;
+	}
+
+}
+
+#navigate {
+  @include width-range;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    font-size: 11px;
+    user-select: none;
+    cursor: pointer;
+    padding: 0 5px 0 5px;
+    background-color: $fg;
+    color: $bg
+  }
+}
+
+.Submit { 
+  @include width-range;
+	@include flex-column;
+
+  textarea {
+    height: 500px;
+  }
+}
+
+.Post {
+	@include full-width;
+	.IdTag {
+		font-size: 10px;
+		background-color: $orange;
+    color: $bg !important;
+	}
+
+	#new-comment {
+		@include flex-column;
+	}
+
+	li {
+		margin-top: 10px;
+	}
+
+	#thank-you {
+		background-color: $green;
+		padding: 30px;
+	}
+}
+
+.Comment {
+  padding: 5px;
+  border: 1px solid $grey;
+  .CommentID {
+    font-size: 10px;
+  }
+
+  hr {
+    border-bottom: 1px solid $grey !important;
+  }
+}
+
+.TextBody {
+	padding-left: 5px;
+	background-color: $grey;
+}
+
+
+.Login {
+  margin-top: 10px;
+  @include flex-column;
+
+  a {
+    text-align: center;
+    font-size: 10px;
+  }
+
+  input {
+    margin-top: 10px;
+  }
+}
+
+.Register {
+  margin-top: 10px;
+  @include flex-column;
+
+  a {
+    text-align: center;
+    font-size: 10px;
+  }
+}
+
+.IDLink {
+  color: $bg !important;
+}
+
+.LoadingModal {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.521);
+}
+
+@mixin animation {
+  position: absolute;
+  animation-name: grow;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+#anim-circle {
+  font-size: 50px;
+  @include animation
+}
+
+
+@keyframes grow {
+  from{
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(359deg);
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.fade-exit {
+  opacity: 0;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}

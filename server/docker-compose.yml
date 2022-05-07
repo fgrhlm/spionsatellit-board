@@ -1,0 +1,29 @@
+version: "3.9"
+
+networks:
+  default:
+    name: spionsatellit-net
+    external: true
+
+services:
+  mongodb:
+    container_name: spionsatellit-db
+    image: mongo:latest
+    restart: unless-stopped
+    ports: 
+      - 27017:27017
+    volumes: 
+      - ./data:/data/db
+  spionsatellit-api:
+    container_name: spionsatellit-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_URL=${DB_URL}
+      - PORT=${PORT}
+      - SECRET=${SECRET}
+    ports:
+      - '8114:8080'
+    command: npm run prod
+    

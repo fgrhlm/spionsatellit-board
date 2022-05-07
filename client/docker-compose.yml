@@ -1,0 +1,14 @@
+networks:
+  default:
+    name: spionsatellit-net
+    external: true
+      
+services:
+  frontend:
+    container_name: spionsatellit-frontend
+    image: sebp/lighttpd
+    volumes:
+      - ./build:/var/www/localhost/htdocs
+    ports:
+      - "8113:80"
+    tty: true
