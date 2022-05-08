@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Start services
+cd server && docker-compose down && cd ..
+cd client && docker-compose down
+
+# remove docker network
+docker network rm spionsatellit-net

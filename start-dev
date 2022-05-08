@@ -1,6 +1,0 @@
-#!/bin/bash
-
-tmux \
-    new-session  'cd kn0w-backend && docker-compose up mongodb ; bash' \; \
-    split-window -h 'cd kn0w-front && npm run start' \; \
-    split-window 'cd kn0w-backend && npm run dev'

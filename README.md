@@ -12,8 +12,3 @@ simplistic design of [hackernews](https://news.ycombinator.com)
 
 **Frontend**: 
   - **React (Typescript)**
-
-# Can I host it myself?
-
-Yes you can, just `cp env.example .env` in `server/` and `client/` and
-run `./start-prod`

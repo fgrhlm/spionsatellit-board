@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd spionsatellit-backend && docker-compose up -d && cd ..
-cd spionsatellit-frontend && docker-compose up -d

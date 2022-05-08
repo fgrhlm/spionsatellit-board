@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Create docker network
+docker network create spionsatellit-net
+
+# Start services
+cd server && docker-compose up -d && cd ..
+cd client && docker-compose up -d
